@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -37,10 +37,10 @@ namespace AdFormTodoApi.Controllers
 
             if (todoItem == null)
             {
-                _logger.LogError(DateTime.UtcNow +": No TodoItem Exist");
+                _logger.LogError(DateTime.UtcNow +": No TodoItem Exist with id : {0}",id);
                 return NotFound(new { message = "Todo Item does not exists" });
             }
-            _logger.LogInformation(DateTime.UtcNow + ": Fetching Todo Items");
+            _logger.LogInformation(DateTime.UtcNow + ": Fetching Todo Item of ID: {0}", id);
             return todoItem;
         }
 

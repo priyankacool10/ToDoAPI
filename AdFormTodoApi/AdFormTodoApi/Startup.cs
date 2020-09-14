@@ -1,6 +1,7 @@
 using AdFormTodoApi.Middleware;
 using AdFormTodoApi.Models;
 using AdFormTodoApi.Services;
+using AdFormTodoApi.v1.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
-
 namespace AdFormTodoApi
 {
     public class Startup
@@ -24,9 +23,10 @@ namespace AdFormTodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+           // services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+     
             // To Enable EF with SQL Server 
-            //services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase")));
+            services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase")));
 
             services.AddControllers(options =>
             {
@@ -80,7 +80,9 @@ namespace AdFormTodoApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My TODO API V1");
                
             });
-            app.UseMiddleware<LogContextMiddleware>();
+            app.UseMiddleware<CorrelationIdToResponseMiddleware>();
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseMiddleware<ErrorLoggingMiddleware>();
             app.UseRouting();
             app.UseSession();
 

@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Models
 {
@@ -15,5 +11,7 @@ namespace AdFormTodoApi.Models
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
+        public DbSet<Label> Labels { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
