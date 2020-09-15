@@ -1,8 +1,8 @@
 using AdFormTodoApi.Core;
+using AdFormTodoApi.Core.Models;
 using AdFormTodoApi.Core.Services;
 using AdFormTodoApi.Data;
 using AdFormTodoApi.Middleware;
-using AdFormTodoApi.Models;
 using AdFormTodoApi.Service;
 using AdFormTodoApi.Services;
 using AdFormTodoApi.v1.Middleware;
@@ -28,8 +28,6 @@ namespace AdFormTodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           // services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
-     
             // To Enable EF with SQL Server 
             services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase"), x => x.MigrationsAssembly("AdFormTodoApi.Data")));
             services.AddControllers(options =>

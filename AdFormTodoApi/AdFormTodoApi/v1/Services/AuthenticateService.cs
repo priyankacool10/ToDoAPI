@@ -1,5 +1,4 @@
 ﻿using AdFormTodoApi.Core.Models;
-using AdFormTodoApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +6,7 @@ namespace AdFormTodoApi.Services
 {
     public class AuthenticateService : IAuthenicateService
     {
-        private List<User> userList = new List<User>()
+        private readonly List<User> userList = new List<User>()
         {
             new User {Username ="user1", Password="pass1" },
             new User{ Username ="user2", Password = "pass2"}

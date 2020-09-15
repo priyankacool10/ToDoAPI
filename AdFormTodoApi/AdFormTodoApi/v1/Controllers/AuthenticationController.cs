@@ -1,5 +1,4 @@
 ﻿using AdFormTodoApi.Core.Models;
-using AdFormTodoApi.Models;
 using AdFormTodoApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +9,7 @@ namespace AdFormTodoApi.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private IAuthenicateService _authenticateService;
+        private readonly IAuthenicateService _authenticateService;
         public AuthenticationController(IAuthenicateService authenticateService)
         {
             _authenticateService = authenticateService;

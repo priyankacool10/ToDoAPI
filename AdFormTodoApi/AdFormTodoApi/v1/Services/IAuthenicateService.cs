@@ -1,5 +1,4 @@
 ﻿using AdFormTodoApi.Core.Models;
-using AdFormTodoApi.Models;
 
 namespace AdFormTodoApi.Services
 {

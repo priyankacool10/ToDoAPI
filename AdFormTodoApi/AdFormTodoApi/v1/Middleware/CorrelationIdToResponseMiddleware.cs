@@ -1,4 +1,4 @@
-﻿using AdFormTodoApi.Models;
+﻿using AdFormTodoApi.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
@@ -29,16 +29,6 @@ namespace AdFormTodoApi.Middleware
                 context.Response.Headers.Add("x-correlation-id", traceValue);
                 return Task.FromResult(0);
             }, context);
-
-            //var correlationHeaders = context.Request.Headers
-            //    .Where(h => h.Key.ToLowerInvariant().StartsWith("x-correlation-"))
-            //    .ToDictionary(h => h.Key, h => (object)h.Value.ToString());
-
-            //foreach (var correlationHeader in correlationHeaders)
-            //{
-            //    correlationIDs.Update(correlationHeader.Key, correlationHeader.Value.ToString());
-            //}
-
            
             // ensures all entries are tagged with some values
             using (_logger.BeginScope(correlationIDs.GetCurrentID()))
