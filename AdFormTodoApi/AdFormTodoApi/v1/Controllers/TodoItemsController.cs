@@ -24,7 +24,11 @@ namespace AdFormTodoApi.Controllers
 
         }
 
-        // GET: api/TodoItems
+        /// <summary>
+        /// Method to get List of All TodoItems
+        /// </summary>
+        /// <param></param>
+        /// <returns>List of TodoItems</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -40,7 +44,11 @@ namespace AdFormTodoApi.Controllers
             
         }
 
-        // GET: api/TodoItems/5
+        /// <summary>
+        /// Method to get TodoItem based on given ID
+        /// </summary>
+        /// <param name="id">Id of TodoItem</param>
+        /// <returns>TodoItem</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -56,7 +64,11 @@ namespace AdFormTodoApi.Controllers
             return Ok(todoItemDTO);
         }
 
-        // PUT: api/TodoItems/5
+        /// <summary>
+        /// Method to Update TodoItem based on given ID
+        /// </summary>
+        /// <param name="id,todoItemDTO"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -72,8 +84,12 @@ namespace AdFormTodoApi.Controllers
             return NoContent();
         }
 
-        // POST: api/TodoItems
-        
+
+        /// <summary>
+        /// Method to create a TodoItem
+        /// </summary>
+        /// <param name="todoItemDTO"></param>
+        /// <returns>TodoItem</returns>
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -88,7 +104,11 @@ namespace AdFormTodoApi.Controllers
             return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
         }
 
-        // DELETE: api/TodoItems/5
+        /// <summary>
+        /// Method to delete TodoItem of given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteTodoItem(long id)

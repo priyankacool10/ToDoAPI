@@ -23,7 +23,12 @@ namespace AdFormTodoApi.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Labels
+
+        /// <summary>
+        /// Method to get List of All Labels
+        /// </summary>
+        /// <param></param>
+        /// <returns>List of Label</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Label>>> GetLabels()
         {
@@ -36,7 +41,11 @@ namespace AdFormTodoApi.Controllers
             return Ok(labelDTO);
         }
 
-        // GET: api/Labels/5
+        /// <summary>
+        /// Method to get Label based on given ID
+        /// </summary>
+        /// <param name="id">Id of Label</param>
+        /// <returns>Label</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -51,8 +60,11 @@ namespace AdFormTodoApi.Controllers
             return Ok(labelDTO);
         }
 
-        // PUT: api/Labels/5
-        
+        /// <summary>
+        /// Method to Update Label based on given ID
+        /// </summary>
+        /// <param name="id,labelDTO"></param>
+        /// <returns>List of Label</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -68,8 +80,11 @@ namespace AdFormTodoApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Labels
-        
+        /// <summary>
+        /// Method to create a Label
+        /// </summary>
+        /// <param name="labelDTO"></param>
+        /// <returns>Label</returns>
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -83,7 +98,11 @@ namespace AdFormTodoApi.Controllers
             return CreatedAtAction("GetLabel", new { id = label.Id }, label);
         }
 
-        // DELETE: api/Labels/5
+        /// <summary>
+        /// Method to delete Label of given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Label>> DeleteLabel(long id)

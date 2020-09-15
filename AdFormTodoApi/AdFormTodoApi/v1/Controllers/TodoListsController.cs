@@ -21,7 +21,11 @@ namespace AdFormTodoApi.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/TodoLists
+        /// <summary>
+        /// Method to get List of All TodoList
+        /// </summary>
+        /// <param></param>
+        /// <returns>All TodoList</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,7 +40,12 @@ namespace AdFormTodoApi.Controllers
             return Ok(todoListDTO);
         }
 
-        // GET: api/TodoLists/5
+
+        /// <summary>
+        /// Method to get TodoList based on given ID
+        /// </summary>
+        /// <param name="id">Id of TodoList</param>
+        /// <returns>TodoList</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -52,8 +61,12 @@ namespace AdFormTodoApi.Controllers
             return Ok(todoListDTO);
         }
 
-        // PUT: api/TodoLists/5
-       [HttpPut("{id}")]
+        /// <summary>
+        /// Method to Update TodoList based on given ID
+        /// </summary>
+        /// <param name="id,todoListDTO"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutTodoList(long id, TodoListDTO todoListDTO)
         {
             var todoList = _mapper.Map<TodoListDTO, TodoList>(todoListDTO);
@@ -66,7 +79,11 @@ namespace AdFormTodoApi.Controllers
             return NoContent();
         }
 
-        // POST: api/TodoLists
+        /// <summary>
+        /// Method to create a TodoList
+        /// </summary>
+        /// <param name="todoListDTO"></param>
+        /// <returns>TodoList</returns>
        [HttpPost]
         public async Task<ActionResult<TodoList>> PostTodoList(TodoListDTO todoListDTO)
         {
@@ -78,7 +95,11 @@ namespace AdFormTodoApi.Controllers
             return CreatedAtAction("GetTodoList", new { id = todoList.Id }, todoList);
         }
 
-        // DELETE: api/TodoLists/5
+        /// <summary>
+        /// Method to delete TodoList of given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<TodoList>> DeleteTodoList(long id)
         {
