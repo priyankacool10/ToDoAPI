@@ -15,7 +15,11 @@ namespace AdFormTodoApi.Controllers
             _authenticateService = authenticateService;
         }
 
-        // POST: api/Authentication
+        /// <summary>
+        /// Method to authenticate User
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns>string</returns>
         [HttpPost]
         public IActionResult Post([FromBody]User userObj)
         {
