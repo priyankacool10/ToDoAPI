@@ -208,6 +208,7 @@ C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\n
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
@@ -321,7 +322,14 @@ C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\n
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.pdb
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.genruntimeconfig.cache
-C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Core.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Data.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Service.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Core.pdb
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Data.pdb
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Service.pdb
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.csproj.CoreCompileInputs.cache
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cache

@@ -1,4 +1,5 @@
-﻿using AdFormTodoApi.Models;
+﻿using AdFormTodoApi.Core.Models;
+using AdFormTodoApi.Models;
 using AdFormTodoApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

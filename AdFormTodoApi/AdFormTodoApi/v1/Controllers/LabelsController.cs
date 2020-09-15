@@ -1,8 +1,11 @@
-﻿using AdFormTodoApi.Models;
+﻿using AdFormTodoApi.Core.Models;
+using AdFormTodoApi.Core.Services;
+using AdFormTodoApi.v1.DTOs;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Controllers
@@ -11,97 +14,83 @@ namespace AdFormTodoApi.Controllers
     [ApiController]
     public class LabelsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly ILabelService _labelService;
+        private readonly IMapper _mapper;
 
-        public LabelsController(TodoContext context)
+        public LabelsController(ILabelService labelService, IMapper mapper)
         {
-            _context = context;
+            _labelService = labelService;
+            _mapper = mapper;
         }
 
         // GET: api/Labels
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Label>>> GetLabels()
         {
-            return await _context.Labels.ToListAsync();
+            var labels = await _labelService.GetAllLabel();
+            var labelDTO = _mapper.Map<IEnumerable<Label>, IEnumerable<LabelDTO>>(labels);
+            if (labels == null)
+            {
+                return NotFound(new { message = "Labels does not exist" });
+            }
+            return Ok(labelDTO);
         }
 
         // GET: api/Labels/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Label>> GetLabel(long id)
         {
-            var label = await _context.Labels.FindAsync(id);
-
+            var label = await _labelService.GetLabelById(id);
+            var labelDTO = _mapper.Map<Label, LabelDTO>(label);
             if (label == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Label with id : {0} does not exist", id });
             }
-
-            return label;
+            return Ok(labelDTO);
         }
 
         // PUT: api/Labels/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLabel(long id, Label label)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> PutLabel(long id, LabelDTO labelDTO)
         {
+            var label = _mapper.Map<LabelDTO, Label>(labelDTO);
             if (id != label.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(label).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LabelExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _labelService.UpdateLabel(id, label);
             return NoContent();
         }
 
         // POST: api/Labels
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        
         [HttpPost]
-        public async Task<ActionResult<Label>> PostLabel(Label label)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<Label>> PostLabel([FromBody]LabelDTO labelDTO)
         {
-            _context.Labels.Add(label);
-            await _context.SaveChangesAsync();
-
+            if (labelDTO.Name == null)
+                return BadRequest(new { message = "Label Name mandatory" });
+            var label = _mapper.Map < LabelDTO, Label>(labelDTO);
+            await _labelService.CreateLabel(label);
             return CreatedAtAction("GetLabel", new { id = label.Id }, label);
         }
 
         // DELETE: api/Labels/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Label>> DeleteLabel(long id)
         {
-            var label = await _context.Labels.FindAsync(id);
-            if (label == null)
-            {
-                return NotFound();
-            }
-
-            _context.Labels.Remove(label);
-            await _context.SaveChangesAsync();
-
-            return label;
+            await _labelService.DeleteLabel(id);
+            return NoContent();
         }
 
-        private bool LabelExists(long id)
-        {
-            return _context.Labels.Any(e => e.Id == id);
-        }
     }
 }

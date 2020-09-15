@@ -1,4 +1,5 @@
-﻿using AdFormTodoApi.Models;
+﻿using AdFormTodoApi.Core.Models;
+using AdFormTodoApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 

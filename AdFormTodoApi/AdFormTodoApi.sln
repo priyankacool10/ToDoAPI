@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi", "AdFormTodoApi\AdFormTodoApi.csproj", "{49701807-770E-4F45-A851-C2F5B12FB7D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi", "AdFormTodoApi\AdFormTodoApi.csproj", "{49701807-770E-4F45-A851-C2F5B12FB7D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Service", "AdFormTodoApi.Service\AdFormTodoApi.Service.csproj", "{0E98014E-F224-4324-9393-7E7502B57EAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Data", "AdFormTodoApi.Data\AdFormTodoApi.Data.csproj", "{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Core", "AdFormTodoApi.Core\AdFormTodoApi.Core.csproj", "{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{49701807-770E-4F45-A851-C2F5B12FB7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49701807-770E-4F45-A851-C2F5B12FB7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49701807-770E-4F45-A851-C2F5B12FB7D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E98014E-F224-4324-9393-7E7502B57EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E98014E-F224-4324-9393-7E7502B57EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E98014E-F224-4324-9393-7E7502B57EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E98014E-F224-4324-9393-7E7502B57EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

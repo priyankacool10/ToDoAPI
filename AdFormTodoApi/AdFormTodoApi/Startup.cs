@@ -1,7 +1,12 @@
+using AdFormTodoApi.Core;
+using AdFormTodoApi.Core.Services;
+using AdFormTodoApi.Data;
 using AdFormTodoApi.Middleware;
 using AdFormTodoApi.Models;
+using AdFormTodoApi.Service;
 using AdFormTodoApi.Services;
 using AdFormTodoApi.v1.Middleware;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,8 +31,7 @@ namespace AdFormTodoApi
            // services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
      
             // To Enable EF with SQL Server 
-            services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase")));
-
+            services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase"), x => x.MigrationsAssembly("AdFormTodoApi.Data")));
             services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true; // false by default
@@ -54,6 +58,11 @@ namespace AdFormTodoApi
             // Registering custom Authentication service
             services.AddScoped<IAuthenicateService, AuthenticateService>();
             services.AddScoped<CorrelationID, CorrelationID>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ITodoItemService, TodoItemService>();
+            services.AddTransient<ITodoListService, TodoListService>();
+            services.AddTransient<ILabelService, LabelService>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSession();
             services.AddDistributedMemoryCache();
 
@@ -77,7 +86,7 @@ namespace AdFormTodoApi
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My TODO API V1");
+                c.SwaggerEndpoint("v1/swagger.json", "My TODO API V1");
                
             });
             app.UseMiddleware<CorrelationIdToResponseMiddleware>();

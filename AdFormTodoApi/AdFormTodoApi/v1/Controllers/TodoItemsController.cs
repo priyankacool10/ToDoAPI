@@ -1,10 +1,11 @@
-﻿using AdFormTodoApi.Models;
+﻿using AdFormTodoApi.Core.Models;
+using AdFormTodoApi.Core.Services;
+using AdFormTodoApi.v1.DTOs;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Controllers
@@ -13,98 +14,88 @@ namespace AdFormTodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
-        private readonly ILogger<TodoItemsController> _logger;
-        public TodoItemsController(TodoContext context, ILogger<TodoItemsController> logger)
+        private readonly ITodoItemService _todoItemService;
+        private readonly IMapper _mapper;
+        public TodoItemsController(ITodoItemService todoItemService, IMapper mapper)
         {
-            _context = context;
-            _logger = logger;
+            _todoItemService = todoItemService;
+            _mapper = mapper;
+
+
         }
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            _logger.LogInformation("Fetching list of all Todo Items");
-            return await _context.TodoItems.ToListAsync();
+           var todoItems= await _todoItemService.GetAllTodoItem();
+           var todoItemsDTO = _mapper.Map<IEnumerable<TodoItem>, IEnumerable<TodoItemDTO>>(todoItems);
+            if (todoItems == null)
+            {
+                return NotFound(new { message = "TodoItem does not exists" });
+            }
+            return Ok(todoItemsDTO);
+            
         }
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _todoItemService.GetTodoItemById(id);
+            var todoItemDTO = _mapper.Map<TodoItem,TodoItemDTO>(todoItem);
 
             if (todoItem == null)
             {
-                _logger.LogError(DateTime.UtcNow +": No TodoItem Exist with id : {0}",id);
                 return NotFound(new { message = "Todo Item does not exists" });
             }
-            _logger.LogInformation(DateTime.UtcNow + ": Fetching Todo Item of ID: {0}", id);
-            return todoItem;
+            return Ok(todoItemDTO);
         }
 
         // PUT: api/TodoItems/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> PutTodoItem(long id, TodoItemDTO todoItemDTO)
         {
+            var todoItem = _mapper.Map<TodoItemDTO, TodoItem>(todoItemDTO);
             if (id != todoItem.Id)
             {
                 return BadRequest();
             }
-            todoItem.UpdatedDate = DateTime.UtcNow;
-            _context.Entry(todoItem).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TodoItemExists(id))
-                {
-                    return NotFound(new { message = "Todo Item does not exists" });
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            _logger.LogInformation(DateTime.UtcNow + ": Todo Item with {0} updated",id);
+            await _todoItemService.UpdateTodoItem(id,todoItem);
             return NoContent();
         }
 
         // POST: api/TodoItems
         
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<TodoItem>> PostTodoItem(SaveTodoItemDTO todoItemDTO)
         {
-            todoItem.CreatedDate = DateTime.UtcNow;
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation(DateTime.UtcNow+": Todo Item added");
+            var todoItem = _mapper.Map<SaveTodoItemDTO, TodoItem>(todoItemDTO);
+            if (todoItem.Description == null) 
+                return BadRequest(new {message="TodoItem Description mandatory" });
+            
+            await _todoItemService.CreateTodoItem(todoItem);
             return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
         }
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound(new { message = "Todo Item does not exists" });
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation(DateTime.UtcNow + ": TodoItem with id: {0} deleted",id);
-            return todoItem;
+            await _todoItemService.DeleteTodoItem(id);
+            return NoContent();
         }
 
-        private bool TodoItemExists(long id)
-        {
-            return _context.TodoItems.Any(e => e.Id == id);
-        }
     }
 }

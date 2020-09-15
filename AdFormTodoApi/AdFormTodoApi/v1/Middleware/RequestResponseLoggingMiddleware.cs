@@ -98,7 +98,7 @@ namespace AdFormTodoApi.v1.Middleware
 
             _logger.LogInformation($"Http Response Information:{Environment.NewLine}" +
                                    $"Response Status: {context.Response.StatusCode} {Environment.NewLine}" +
-                                   $"Response Headers: {context.Response.Headers} " +
+                                   $"Response Headers: {DisplayHeaders(context.Response.Headers)} " +
                                    $"Response Body: {responseBodyText}");
 
             await responseBody.CopyToAsync(originalBodyStream);
