@@ -7,9 +7,10 @@
        
         public long LabelId { get; set; }
        
+        public virtual Label Label { get; set; }
         public long TodoListId { get; set; }
 
-        public TodoList TodoList { get; set; }
+        public virtual TodoList TodoList { get; set; }
 
 
 

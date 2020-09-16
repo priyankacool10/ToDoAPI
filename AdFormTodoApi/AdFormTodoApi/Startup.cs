@@ -5,8 +5,13 @@ using AdFormTodoApi.Data;
 using AdFormTodoApi.Middleware;
 using AdFormTodoApi.Service;
 using AdFormTodoApi.Services;
+using AdFormTodoApi.v1.GraphiQL.Mutation;
+using AdFormTodoApi.v1.GraphiQL.Queries;
+using AdFormTodoApi.v1.GraphiQL.Types;
 using AdFormTodoApi.v1.Middleware;
 using AutoMapper;
+using HotChocolate;
+using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +33,14 @@ namespace AdFormTodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddGraphQL(s => SchemaBuilder.New()
+                .AddServices(s)
+                .AddType<TodoItemType>()
+                .AddType<TodoListType>()
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
+                .Create());
             // To Enable EF with SQL Server 
             services.AddDbContext<TodoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TodoDatabase"), x => x.MigrationsAssembly("AdFormTodoApi.Data")));
             services.AddControllers(options =>
@@ -72,7 +85,9 @@ namespace AdFormTodoApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UsePlayground();
             }
+            app.UseGraphQL("/graphql").UsePlayground("/graphql");
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseHttpsRedirection();

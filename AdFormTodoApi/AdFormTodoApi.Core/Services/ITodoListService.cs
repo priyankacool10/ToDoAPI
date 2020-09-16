@@ -6,7 +6,7 @@ namespace AdFormTodoApi.Core.Services
 {
     public interface ITodoListService
     {
-        Task<IEnumerable<TodoList>> GetAllTodoList();
+        Task<IEnumerable<TodoList>> GetAllTodoList(PagingOptions op);
         Task<TodoList> GetTodoListById(long id);
         Task<TodoList> CreateTodoList(TodoList newTodoList);
         Task UpdateTodoList(long todoItemId, TodoList todoListToBeUpdated);

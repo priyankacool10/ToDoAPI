@@ -6,7 +6,7 @@ namespace AdFormTodoApi.Core.Repositories
 {
     public interface ITodoItemRepository :IRepository<TodoItem>
     {
-        Task<IEnumerable<TodoItem>> GetAllTodoItemsAsync();
+        Task<IEnumerable<TodoItem>> GetAllTodoItemsAsync(PagingOptions op);
         Task<TodoItem> GetTodoItemByIdAsync(long id);
         Task<IEnumerable<TodoItem>> GetTodoItemByTodoListIdAsync(long todoListId);
     }

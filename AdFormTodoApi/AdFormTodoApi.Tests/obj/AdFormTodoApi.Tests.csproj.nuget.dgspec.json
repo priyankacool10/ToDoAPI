@@ -66,12 +66,12 @@
         }
       }
     },
-    "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.Data.csproj": {
+    "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.Data.csproj",
-        "projectName": "AdFormTodoApi.Data",
-        "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.Data.csproj",
+        "projectUniqueName": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.DataAccessLayer.csproj",
+        "projectName": "AdFormTodoApi.DataAccessLayer",
+        "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\priyankakapoor\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\obj\\",
         "projectStyle": "PackageReference",
@@ -317,8 +317,8 @@
               "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Core\\AdFormTodoApi.Core.csproj": {
                 "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Core\\AdFormTodoApi.Core.csproj"
               },
-              "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.Data.csproj": {
-                "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.Data.csproj"
+              "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Data\\AdFormTodoApi.DataAccessLayer.csproj"
               },
               "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Service\\AdFormTodoApi.Service.csproj": {
                 "projectPath": "C:\\Users\\priyankakapoor\\Desktop\\ToDoRepo\\AdFormTodoApi\\AdFormTodoApi.Service\\AdFormTodoApi.Service.csproj"
@@ -342,6 +342,14 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "HotChocolate.AspNetCore": {
+              "target": "Package",
+              "version": "[10.5.2, )"
+            },
+            "HotChocolate.AspNetCore.Playground": {
+              "target": "Package",
+              "version": "[10.5.2, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",

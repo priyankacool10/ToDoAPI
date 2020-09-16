@@ -2,6 +2,7 @@
 using AdFormTodoApi.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Data.Repositories
@@ -12,10 +13,12 @@ namespace AdFormTodoApi.Data.Repositories
             : base(context)
         { }
 
-        public async Task<IEnumerable<TodoList>> GetAllTodoListAsync()
+        public async Task<IEnumerable<TodoList>> GetAllTodoListAsync(PagingOptions op)
         {
             return await TodoContext.TodoLists
                 .Include(m => m.TodoItems)
+                .Skip((op.PageNumber - 1) * op.PageSize)
+                .Take(op.PageSize)
                 .ToListAsync();
         }
                 

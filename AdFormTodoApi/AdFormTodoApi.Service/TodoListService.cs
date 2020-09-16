@@ -31,10 +31,10 @@ namespace AdFormTodoApi.Service
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<TodoList>> GetAllTodoList()
+        public async Task<IEnumerable<TodoList>> GetAllTodoList(PagingOptions op)
         {
             return await _unitOfWork.TodoLists
-                .GetAllTodoListAsync();
+                .GetAllTodoListAsync(op);
         }
 
         public async Task<TodoList> GetTodoListById(long id)

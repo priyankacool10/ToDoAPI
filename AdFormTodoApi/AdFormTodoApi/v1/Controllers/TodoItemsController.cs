@@ -32,9 +32,9 @@ namespace AdFormTodoApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems([FromQuery]PagingOptions options)
         {
-           var todoItems= await _todoItemService.GetAllTodoItem();
+           var todoItems= await _todoItemService.GetAllTodoItem(options);
            var todoItemsDTO = _mapper.Map<IEnumerable<TodoItem>, IEnumerable<TodoItemDTO>>(todoItems);
             if (todoItems == null)
             {
@@ -42,7 +42,7 @@ namespace AdFormTodoApi.Controllers
             }
             return Ok(todoItemsDTO);
             
-        }
+        } //paging and search
 
         /// <summary>
         /// Method to get TodoItem based on given ID

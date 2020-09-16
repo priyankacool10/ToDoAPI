@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi", "AdFormTodoApi\AdFormTodoApi.csproj", "{49701807-770E-4F45-A851-C2F5B12FB7D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Service", "AdFormTodoApi.Service\AdFormTodoApi.Service.csproj", "{0E98014E-F224-4324-9393-7E7502B57EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi.Service", "AdFormTodoApi.Service\AdFormTodoApi.Service.csproj", "{0E98014E-F224-4324-9393-7E7502B57EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Data", "AdFormTodoApi.Data\AdFormTodoApi.Data.csproj", "{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi.DataAccessLayer", "AdFormTodoApi.Data\AdFormTodoApi.DataAccessLayer.csproj", "{7AEF9490-91CC-4AEC-B30B-C4106D45EC19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Core", "AdFormTodoApi.Core\AdFormTodoApi.Core.csproj", "{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi.Core", "AdFormTodoApi.Core\AdFormTodoApi.Core.csproj", "{8C2EA386-32CC-4CB8-93AA-441EFF428BDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdFormTodoApi.Tests", "AdFormTodoApi.Tests\AdFormTodoApi.Tests.csproj", "{0CFDFC43-58B0-4544-9F20-B7CE9EC456E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdFormTodoApi.Tests", "AdFormTodoApi.Tests\AdFormTodoApi.Tests.csproj", "{0CFDFC43-58B0-4544-9F20-B7CE9EC456E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

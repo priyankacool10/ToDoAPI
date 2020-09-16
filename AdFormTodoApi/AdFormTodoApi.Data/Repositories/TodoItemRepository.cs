@@ -13,10 +13,12 @@ namespace AdFormTodoApi.Data.Repositories
             : base(context)
         { }
 
-        public async Task<IEnumerable<TodoItem>> GetAllTodoItemsAsync()
+        public async Task<IEnumerable<TodoItem>> GetAllTodoItemsAsync(PagingOptions op)
         {
             return await TodoContext.TodoItems
                 .Include(m => m.TodoList)
+                .Skip((op.PageNumber - 1) * op.PageSize)
+                .Take(op.PageSize)
                 .ToListAsync();
         }
 

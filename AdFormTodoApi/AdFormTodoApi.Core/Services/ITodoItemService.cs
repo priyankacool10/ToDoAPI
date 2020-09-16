@@ -8,7 +8,7 @@ namespace AdFormTodoApi.Core.Services
 {
     public interface ITodoItemService
     {
-        Task<IEnumerable<TodoItem>> GetAllTodoItem();
+        Task<IEnumerable<TodoItem>> GetAllTodoItem(PagingOptions op);
         Task<TodoItem> GetTodoItemById(long id);
         Task<IEnumerable<TodoItem>> GetTodoItemByTodoListId(long todoListId);
         Task<TodoItem> CreateTodoItem(TodoItem newTodoItem);

@@ -29,9 +29,9 @@ namespace AdFormTodoApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<TodoList>>> GetTodoLists()
+        public async Task<ActionResult<IEnumerable<TodoList>>> GetTodoLists([FromQuery]PagingOptions op)
         {
-            var todoList = await _todoListService.GetAllTodoList();
+            var todoList = await _todoListService.GetAllTodoList(op);
             var todoListDTO = _mapper.Map<IEnumerable<TodoList>, IEnumerable<TodoListDTO>>(todoList);
             if (todoList == null)
             {

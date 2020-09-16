@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="10.5.2" />
+    <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="10.5.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
@@ -23,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdFormTodoApi.Core\AdFormTodoApi.Core.csproj" />
-    <ProjectReference Include="..\AdFormTodoApi.Data\AdFormTodoApi.Data.csproj" />
+    <ProjectReference Include="..\AdFormTodoApi.Data\AdFormTodoApi.DataAccessLayer.csproj" />
     <ProjectReference Include="..\AdFormTodoApi.Service\AdFormTodoApi.Service.csproj" />
   </ItemGroup>
 
