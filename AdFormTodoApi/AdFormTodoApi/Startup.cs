@@ -54,8 +54,7 @@ namespace AdFormTodoApi
                 options.RespectBrowserAcceptHeader = true;
                 options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
                 
-            })
-                .AddXmlSerializerFormatters();
+            }).AddXmlSerializerFormatters();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
