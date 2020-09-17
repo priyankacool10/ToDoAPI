@@ -48,7 +48,7 @@ namespace AdFormTodoApi.Tests
         }
 
         /// <summary>
-        /// Test service to get TodoItem
+        /// Test service to get all TodoList
         /// </summary>
         [Test]
         public void Test_GetAllTodoList()
@@ -68,10 +68,10 @@ namespace AdFormTodoApi.Tests
         }
 
         /// <summary>
-        /// Test to Get TodoItems
+        /// Test to Get TodoList
         /// </summary>
         [Test]
-        public void Test_GetTodoItems()
+        public void Test_GetTodoLists()
         {
             //Arrange
             _mockTodoListRepository.Setup(x => x.GetAllTodoListAsync(op)).ReturnsAsync(_todoList);
@@ -93,10 +93,10 @@ namespace AdFormTodoApi.Tests
         }
 
         /// <summary>
-        /// Test to add TodoItem
+        /// Test to add TodoList
         /// </summary>
         [Test]
-        public void Test_PostTodoItem()
+        public void Test_PostTodoList()
         {
             _mockTodoListRepository.Setup(x => x.GetAllTodoListAsync(op)).ReturnsAsync(_todoList);
             _mockUnitOfWork.Setup(e => e.TodoLists).Returns(_mockTodoListRepository.Object);
