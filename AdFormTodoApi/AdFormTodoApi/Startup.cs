@@ -87,6 +87,7 @@ namespace AdFormTodoApi
                 app.UseDeveloperExceptionPage();
                 app.UsePlayground();
             }
+           
             app.UseGraphQL("/graphql").UsePlayground("/graphql");
             app.UseDefaultFiles();
             app.UseStaticFiles();
