@@ -59,27 +59,7 @@ namespace AdFormTodoApi.Controllers
             }
             return Ok(labelDTO);
         }
-
-        /// <summary>
-        /// Method to Update Label based on given ID
-        /// </summary>
-        /// <param name="id,labelDTO"></param>
-        /// <returns>List of Label</returns>
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutLabel(long id, LabelDTO labelDTO)
-        {
-            var label = _mapper.Map<LabelDTO, Label>(labelDTO);
-            if (id != label.Id)
-            {
-                return BadRequest();
-            }
-
-            await _labelService.UpdateLabel(id, label);
-            return NoContent();
-        }
-
+        
         /// <summary>
         /// Method to create a Label
         /// </summary>

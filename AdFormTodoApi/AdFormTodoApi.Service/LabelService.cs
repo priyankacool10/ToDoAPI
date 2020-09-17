@@ -44,14 +44,6 @@ namespace AdFormTodoApi.Service
                 .GetLabelByIdAsync(id);
         }
 
-        public async Task UpdateLabel(long id, Label newLabel)
-        {
-            var labelToBeUpdated = await _unitOfWork.Labels
-                .GetLabelByIdAsync(id);
-            labelToBeUpdated.Name = newLabel.Name;
-            labelToBeUpdated.UpdatedDate = DateTime.UtcNow;
-            await _unitOfWork.CommitAsync();
-        }
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿namespace AdFormTodoApi.Core.Models
 {
-    public class TodoItem :Todo
+    public class TodoItem :Trackable
     {
         public long Id { get; set; }
         public string Description { get; set; }

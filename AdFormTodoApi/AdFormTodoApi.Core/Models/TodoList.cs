@@ -2,7 +2,7 @@
 
 namespace AdFormTodoApi.Core.Models
 {
-    public class TodoList : Todo
+    public class TodoList : Trackable
     {
         public TodoList() 
         {

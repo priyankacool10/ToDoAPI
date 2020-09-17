@@ -9,7 +9,6 @@ namespace AdFormTodoApi.Core.Services
         Task<IEnumerable<Label>> GetAllLabel();
         Task<Label> GetLabelById(long id);
         Task<Label> CreateLabel(Label newLabel);
-        Task UpdateLabel(long labelId, Label todoListToBeUpdated);
         Task DeleteLabel(long id);
     }
 
