@@ -2578,6 +2578,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
           "HotChocolate.AspNetCore": "10.5.2",
           "HotChocolate.AspNetCore.Playground": "10.5.2",
+          "Microsoft.AspNetCore.JsonPatch": "3.1.8",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.8",
           "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.8",
@@ -2593,6 +2594,7 @@
       },
       "AdFormTodoApi.Core/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.JsonPatch": "3.1.8",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {

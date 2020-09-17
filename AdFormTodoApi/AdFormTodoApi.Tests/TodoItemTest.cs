@@ -104,10 +104,11 @@ namespace AdFormTodoApi.Tests
             //Act
             TodoItemsController todoItemController = new TodoItemsController(_service, _mapper);
             var result = todoItemController.PostTodoItem(_todoItemModel).Result;
+            var response = (result.Result as CreatedAtActionResult).Value as TodoItem;
+            var value = response.Description;
             // Assert
-            
-            var response = (result.Result as CreatedAtActionResult).Value as OkObjectResult;
-           
+            Assert.NotNull(result);
+            Assert.AreEqual("US Task", value);
         }
     }
 }
