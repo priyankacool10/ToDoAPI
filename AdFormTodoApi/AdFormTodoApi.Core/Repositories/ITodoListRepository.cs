@@ -8,6 +8,8 @@ namespace AdFormTodoApi.Core.Repositories
     {
         Task<IEnumerable<TodoList>> GetAllTodoListAsync(PagingOptions op);
         Task<TodoList> GetTodoListByIdAsync(long id);
-        
+        Task<IEnumerable<TodoList>> FindTodoListBySearch(SearchFilter filter);
+
+
     }
 }

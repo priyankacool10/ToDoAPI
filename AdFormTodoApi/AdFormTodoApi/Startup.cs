@@ -33,7 +33,7 @@ namespace AdFormTodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddGraphQL(s => SchemaBuilder.New()
                 .AddServices(s)
                 .AddType<TodoItemType>()
@@ -87,7 +87,7 @@ namespace AdFormTodoApi
                 app.UseDeveloperExceptionPage();
                 app.UsePlayground();
             }
-           
+            app.UseCors();
             app.UseGraphQL("/graphql").UsePlayground("/graphql");
             app.UseDefaultFiles();
             app.UseStaticFiles();

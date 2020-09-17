@@ -29,6 +29,15 @@ namespace AdFormTodoApi.Data.Repositories
                 .SingleOrDefaultAsync(m => m.Id == id);
         }
 
+        public async Task<IEnumerable<TodoList>> FindTodoListBySearch(SearchFilter filter)
+        {
+            return await TodoContext.TodoLists
+               .Where(m => m.Description.Contains(filter.ItemName))
+               .Skip((filter.PageNumber - 1) * filter.PageSize)
+               .Take(filter.PageSize)
+               .ToListAsync();
+
+        }
         private TodoContext TodoContext
         {
             get { return Context as TodoContext; }

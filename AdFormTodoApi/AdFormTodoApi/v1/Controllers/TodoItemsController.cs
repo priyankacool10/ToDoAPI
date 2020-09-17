@@ -44,7 +44,7 @@ namespace AdFormTodoApi.Controllers
             }
             return Ok(todoItemsDTO);
             
-        } //paging and search
+        } 
 
         /// <summary>
         /// Method to get TodoItem based on given ID
@@ -65,6 +65,24 @@ namespace AdFormTodoApi.Controllers
             }
             return Ok(todoItemDTO);
         }
+
+        /// <summary>
+        /// Method to search TodoItem based on Search Filter
+        /// </summary>
+        /// <param name="id">Id of TodoItem</param>
+        /// <returns>TodoItem</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(TodoItem), (int)HttpStatusCode.OK)]
+        [Route("SearchToDoItem")]
+        public async Task<ActionResult<TodoItemDTO>> SearchTodoItem([FromQuery] SearchFilter filter)
+        {
+            var result = await _todoItemService.SearchTodoItem(filter);
+            var final = _mapper.Map<IEnumerable<TodoItem>, IEnumerable<TodoItemDTO>>(result);
+            return Ok(final);
+        }
+
 
         /// <summary>
         /// Method to Update TodoItem based on given ID

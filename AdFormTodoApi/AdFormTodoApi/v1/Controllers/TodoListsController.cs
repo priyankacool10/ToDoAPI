@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Controllers
@@ -60,6 +61,24 @@ namespace AdFormTodoApi.Controllers
             }
             return Ok(todoListDTO);
         }
+
+        /// <summary>
+        /// Method to search TodoList based on Search Filter
+        /// </summary>
+        /// <param name="filter">Filter for Search</param>
+        /// <returns>TodoListDTO</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(TodoItem), (int)HttpStatusCode.OK)]
+        [Route("SearchTodoList")]
+        public async Task<ActionResult<TodoListDTO>> SearchTodoList([FromQuery] SearchFilter filter)
+        {
+            var result = await _todoListService.SearchTodoList(filter);
+            var final = _mapper.Map<IEnumerable<TodoList>, IEnumerable<TodoListDTO>>(result);
+            return Ok(final);
+        }
+
 
         /// <summary>
         /// Method to Update TodoList based on given ID

@@ -51,6 +51,12 @@ namespace AdFormTodoApi.Service
             todoItemToBeUpdated.UpdatedDate = DateTime.UtcNow;
             await _unitOfWork.CommitAsync();
         }
+
+        public async Task<IEnumerable<TodoList>> SearchTodoList(SearchFilter filter)
+        {
+            return await _unitOfWork.TodoLists.FindTodoListBySearch(filter);
+
+        }
     }
 
 }

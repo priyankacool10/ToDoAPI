@@ -9,5 +9,6 @@ namespace AdFormTodoApi.Core.Repositories
         Task<IEnumerable<TodoItem>> GetAllTodoItemsAsync(PagingOptions op);
         Task<TodoItem> GetTodoItemByIdAsync(long id);
         Task<IEnumerable<TodoItem>> GetTodoItemByTodoListIdAsync(long todoListId);
+        Task<IEnumerable<TodoItem>> FindTodoItemBySearch(SearchFilter filter);
     }
 }

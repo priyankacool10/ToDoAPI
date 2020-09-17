@@ -11,6 +11,7 @@ namespace AdFormTodoApi.Core.Services
     {
         Task<IEnumerable<TodoItem>> GetAllTodoItem(PagingOptions op);
         Task<TodoItem> GetTodoItemById(long id);
+        Task<IEnumerable<TodoItem>> SearchTodoItem(SearchFilter filter);
         Task<IEnumerable<TodoItem>> GetTodoItemByTodoListId(long todoListId);
         Task<TodoItem> CreateTodoItem(TodoItem newTodoItem);
         Task UpdateTodoItem(long todoItemId, TodoItem todoItemToBeUpdated);

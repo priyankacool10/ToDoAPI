@@ -8,6 +8,7 @@ namespace AdFormTodoApi.Core.Services
     {
         Task<IEnumerable<TodoList>> GetAllTodoList(PagingOptions op);
         Task<TodoList> GetTodoListById(long id);
+        Task<IEnumerable<TodoList>> SearchTodoList(SearchFilter filter);
         Task<TodoList> CreateTodoList(TodoList newTodoList);
         Task UpdateTodoList(long todoItemId, TodoList todoListToBeUpdated);
         Task DeleteTodoList(long id);

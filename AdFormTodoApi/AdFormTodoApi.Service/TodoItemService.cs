@@ -44,6 +44,11 @@ namespace AdFormTodoApi.Service
                 .GetTodoItemByIdAsync(id);
         }
 
+        public async Task<IEnumerable<TodoItem>> SearchTodoItem(SearchFilter filter) 
+        {
+            return await _unitOfWork.TodoItems.FindTodoItemBySearch(filter);
+        
+        }
         public async Task<IEnumerable<TodoItem>> GetTodoItemByTodoListId(long todoListId)
         {
             return await _unitOfWork.TodoItems
