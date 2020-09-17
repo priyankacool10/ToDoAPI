@@ -1,6 +1,7 @@
 ﻿using AdFormTodoApi.Core;
 using AdFormTodoApi.Core.Models;
 using AdFormTodoApi.Core.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace AdFormTodoApi.Service
 
         public async Task DeleteTodoItem(long id)
         {
-            var todoItemToBeDeleted= await _unitOfWork.TodoItems
+            var todoItemToBeDeleted = await _unitOfWork.TodoItems
                 .GetTodoItemByIdAsync(id);
             _unitOfWork.TodoItems.Remove(todoItemToBeDeleted);
             await _unitOfWork.CommitAsync();
@@ -58,6 +59,12 @@ namespace AdFormTodoApi.Service
             todoItemToBeUpdated.UpdatedDate = DateTime.UtcNow;
             await _unitOfWork.CommitAsync();
         }
+        public async Task PatchTodoItem(long id, JsonPatchDocument<TodoItem> todoItemPatch)
+        {
+            var todoItemToBeUpdated = await _unitOfWork.TodoItems
+                .GetTodoItemByIdAsync(id);
+            todoItemPatch.ApplyTo(todoItemToBeUpdated);
+            await _unitOfWork.CommitAsync();
+        }
     }
-
 }

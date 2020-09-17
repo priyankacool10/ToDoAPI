@@ -3,8 +3,10 @@ using AdFormTodoApi.Core.Services;
 using AdFormTodoApi.v1.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
@@ -67,7 +69,8 @@ namespace AdFormTodoApi.Controllers
         /// <summary>
         /// Method to Update TodoItem based on given ID
         /// </summary>
-        /// <param name="id,todoItemDTO"></param>
+        /// <param name="id"></param>
+        /// <param name="todoItemDTO"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -84,7 +87,23 @@ namespace AdFormTodoApi.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Method to Patch TodoItem based on given ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="todoItem"></param>
+        /// <returns></returns>
+        [HttpPatch]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [Route("PatchToDoItem")]
+        public async Task<IActionResult> JsonPatchTodoItem(long id, [FromBody] JsonPatchDocument<TodoItem> todoItem)
+        {
+            await _todoItemService.PatchTodoItem(id, todoItem);
+            return NoContent();
+            
+        }
         /// <summary>
         /// Method to create a TodoItem
         /// </summary>

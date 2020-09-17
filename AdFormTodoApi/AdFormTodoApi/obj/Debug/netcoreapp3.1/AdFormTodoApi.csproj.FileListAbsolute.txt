@@ -338,9 +338,6 @@ C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\n
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.DataAccessLayer.pdb
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\bin\Debug\netcoreapp3.1\AdFormTodoApi.Service.pdb
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.csprojAssemblyReference.cache
-C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.csproj.CoreCompileInputs.cache
-C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.AssemblyInfoInputs.cache
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.AssemblyInfo.cs
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.RazorTargetAssemblyInfo.cache
@@ -350,3 +347,6 @@ C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\n
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.dll
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.pdb
 C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.genruntimeconfig.cache
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.csproj.CoreCompileInputs.cache
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\priyankakapoor\Desktop\ToDoRepo\AdFormTodoApi\AdFormTodoApi\obj\Debug\netcoreapp3.1\AdFormTodoApi.MvcApplicationPartsAssemblyInfo.cache

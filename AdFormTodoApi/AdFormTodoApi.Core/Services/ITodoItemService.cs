@@ -1,4 +1,5 @@
 ﻿using AdFormTodoApi.Core.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace AdFormTodoApi.Core.Services
         Task<IEnumerable<TodoItem>> GetTodoItemByTodoListId(long todoListId);
         Task<TodoItem> CreateTodoItem(TodoItem newTodoItem);
         Task UpdateTodoItem(long todoItemId, TodoItem todoItemToBeUpdated);
+        Task PatchTodoItem(long id, JsonPatchDocument<TodoItem> todoItem);
         Task DeleteTodoItem(long id);
     }
 }
