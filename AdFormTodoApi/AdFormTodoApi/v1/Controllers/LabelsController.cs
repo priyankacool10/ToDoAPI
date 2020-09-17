@@ -73,7 +73,7 @@ namespace AdFormTodoApi.Controllers
         {
             if (labelDTO.Name == null)
                 return BadRequest(new { message = "Label Name mandatory" });
-            var label = _mapper.Map < LabelDTO, Label>(labelDTO);
+            var label = _mapper.Map<LabelDTO, Label>(labelDTO);
             await _labelService.CreateLabel(label);
             return CreatedAtAction("GetLabel", new { id = label.Id }, label);
         }

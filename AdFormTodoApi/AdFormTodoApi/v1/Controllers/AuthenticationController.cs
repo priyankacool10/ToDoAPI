@@ -32,8 +32,6 @@ namespace AdFormTodoApi.Controllers
             }
             else
             {
-                //Auth Token
-                HttpContext.Session.SetString("username", userObj.Username);
                 return Ok(new { message = "Welcome "+user.Username});
             }
         }

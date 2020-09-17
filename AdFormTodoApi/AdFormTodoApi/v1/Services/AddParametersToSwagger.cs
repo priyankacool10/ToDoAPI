@@ -21,7 +21,21 @@ namespace AdFormTodoApi.Services
                     Description = "Corrrelation ID",
                     Required = true
                 });
-                
+                operation.Parameters.Add(new OpenApiParameter()
+                {
+                    Name = "accept",
+                    In = ParameterLocation.Header,
+                    Description = "",
+                    Required = true
+                });
+                operation.Parameters.Add(new OpenApiParameter()
+                {
+                    Name = "content-location",
+                    In = ParameterLocation.Header,
+                    Description = "",
+                    Required = true
+                });
+
             }
         }
     }

@@ -14,6 +14,7 @@ using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,8 +47,15 @@ namespace AdFormTodoApi
             services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true; // false by default
-            }).AddNewtonsoftJson();
-            
+                
+            }).AddNewtonsoftJson().AddXmlSerializerFormatters(); ;
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+                options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+                
+            })
+                .AddXmlSerializerFormatters();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
