@@ -1,0 +1,71 @@
+{
+  
+  
+  todoItems{
+    
+    nodes{
+      id
+      description
+    }
+  }
+}
+
+
+mutation{
+  
+  
+  addLabel(label:{
+    id:0
+    name:"Label 1"
+  }){
+    
+    id,
+    name
+    
+  }
+}
+
+mutation{
+  
+  
+  addTodoItem(todoItem:{
+    id:0
+    description:"Item 1",
+    
+    labelId:1,
+    todoListId:2,
+    
+  }){
+    
+    id,
+    description
+    
+  }
+}
+
+mutation{
+  
+  
+  addTodoList(todoList:{
+    id:0
+    description:"List 1",
+    
+  }){
+    
+    id,
+    description
+    
+  }
+}
+
+
+
+Patch Request:
+
+[
+  {
+      "op": "replace",
+      "path": "Description",
+      "value": "Hello Patch!"
+    }
+]

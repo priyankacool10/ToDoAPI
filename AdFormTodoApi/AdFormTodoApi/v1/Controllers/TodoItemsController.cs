@@ -2,6 +2,7 @@
 using AdFormTodoApi.Core.Services;
 using AdFormTodoApi.v1.DTOs;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace AdFormTodoApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoItemService _todoItemService;
@@ -31,6 +33,7 @@ namespace AdFormTodoApi.Controllers
         /// </summary>
         /// <param></param>
         /// <returns>List of TodoItems</returns>
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

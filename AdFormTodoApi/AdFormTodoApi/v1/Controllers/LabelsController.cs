@@ -1,4 +1,5 @@
-﻿using AdFormTodoApi.Core.Models;
+﻿using AdFormTodoApi.Core.Helpers;
+using AdFormTodoApi.Core.Models;
 using AdFormTodoApi.Core.Services;
 using AdFormTodoApi.v1.DTOs;
 using AutoMapper;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AdFormTodoApi.Controllers
 {
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class LabelsController : ControllerBase

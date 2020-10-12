@@ -1,6 +1,6 @@
 ﻿using AdFormTodoApi.Core.Models;
-using AdFormTodoApi.Services;
-using Microsoft.AspNetCore.Http;
+using AdFormTodoApi.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdFormTodoApi.Controllers
@@ -9,10 +9,10 @@ namespace AdFormTodoApi.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenicateService _authenticateService;
-        public AuthenticationController(IAuthenicateService authenticateService)
+        private readonly IUserService _userService;
+        public AuthenticationController(IUserService userService)
         {
-            _authenticateService = authenticateService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -20,19 +20,20 @@ namespace AdFormTodoApi.Controllers
         /// </summary>
         /// <param name="User"></param>
         /// <returns>string</returns>
-        [HttpPost]
-        public IActionResult Post([FromBody]User userObj)
+        [HttpPost("Authenticate")]
+        [AllowAnonymous]
+        public IActionResult Post(AuthenticateRequest request)
         {
-            var user = _authenticateService.Authenticate(userObj.Username, userObj.Password);
+            var response = _userService.Authenticate(request);
 
-            if (user == null)
+            if (response == null)
             {
                 return BadRequest(new { message = "Username or Password is incorrect" });
 
             }
             else
             {
-                return Ok(new { message = "Welcome "+user.Username});
+                return Ok(response);
             }
         }
 

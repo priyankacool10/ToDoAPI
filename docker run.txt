@@ -1,0 +1,1 @@
+docker run --name mycontainer1 -d -p 6339:8080 dtr.nagarro.com:443/i-priyankakapoor-master:155
